@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DemoCoreMVCConcepts.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoWebAPI.Controllers
 {
     [Route("api/Address")]
+    [Authorize]
     public class AddressController : ControllerBase
     {
         [HttpGet]
         public IEnumerable<Address> GetAddresses()
-        {
+        {            
             var addresses = new List<Address>() { 
                 new Address 
                 { 

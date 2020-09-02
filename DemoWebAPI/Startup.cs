@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DemoWebAPI.Middleware;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +36,11 @@ namespace DemoWebAPI
                     Version = "1.0"
                 });
             });
+            services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", configureOptions =>
+                {
+
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +50,7 @@ namespace DemoWebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseSwagger();
