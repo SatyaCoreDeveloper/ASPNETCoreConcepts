@@ -1,0 +1,11 @@
+﻿@model Address
+
+
+<p>@Model.StreetName ,</p>
+<p>@Model.AddressLine1 ,</p>
+@if (!String.IsNullOrEmpty(Model.AddressLine2))
+{
+    <p>@Model.AddressLine2 ,</p>
+}
+<p>@Model.City ,</p>
+<p>@Model.State - @Model.PinCode</p>

@@ -1,0 +1,7 @@
+﻿@model Customer
+
+<h2>Customer @Model.Name Information</h2>
+<p>Address:</p>
+<partial name="~/Views/Shared/_Address.cshtml" model="Model.address" />
+
+<a class="btn btn-primary" asp-area="" asp-controller="Customer" asp-action="CustomerAddress">Add Customer Address</a>
